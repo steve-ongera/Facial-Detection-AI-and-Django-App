@@ -1,0 +1,29 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Recognition System</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body>
+    <div class="container">
+        <h1>Face Recognition System</h1>
+        <div class="button-container">
+            <a href="{% url 'add_individual' %}" class="btn">Add Individual</a>
+        </div>
+        <div class="recognition-form">
+            <h2>Recognize Face</h2>
+            <form method="post" enctype="multipart/form-data" action="{% url 'recognize_face' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="image">Upload Image:</label>
+                    <input type="file" id="image" name="image" accept="image/*" required>
+                </div>
+                <button type="submit" class="btn">Recognize</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

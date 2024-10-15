@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recognition Results</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Recognition Results</h1>
+        <div class="result-info">
+            {% if result.match_found %}
+                <h2>Match Found!</h2>
+                <p>Name: {{ result.matched_individual.name }}</p>
+                <p>ID Number: {{ result.matched_individual.id_number }}</p>
+                <p>Town: {{ result.matched_individual.town }}</p>
+                <p>Additional Information: {{ result.matched_individual.additional_info }}</p>
+            {% else %}
+                <h2>No Match Found</h2>
+            {% endif %}
+        </div>
+        <div class="image-container">
+            <div class="image-box">
+                <h3>Uploaded Image</h3>
+                <img src="{{ uploaded_image_url }}" alt="Uploaded Image">
+            </div>
+            <div class="image-box">
+                <h3>Processed Image</h3>
+                <img src="{{ processed_image_url }}" alt="Processed Image">
+            </div>
+        </div>
+        <a href="{% url 'index' %}" class="btn">Back to Home</a>
+    </div>
+</body>
+</html>

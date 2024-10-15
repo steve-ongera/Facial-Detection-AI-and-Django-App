@@ -1,0 +1,23 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facial Recognition App</title>
+    <link rel="stylesheet" href="{% static 'css/style.css'%}">
+</head>
+<body>
+    <div class="container">
+        <h1>Facial Recognition App</h1>
+        <form method="post" enctype="multipart/form-data" action="{% url 'recognize_face' %}">
+            {% csrf_token %}
+            <div class="file-upload">
+                <input type="file" name="image" id="image" accept="image/*" required>
+                <label for="image">Choose an image</label>
+            </div>
+            <button type="submit" class="submit-btn">Recognize Faces</button>
+        </form>
+    </div>
+</body>
+</html>

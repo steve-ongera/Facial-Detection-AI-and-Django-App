@@ -1,0 +1,31 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recognition Results</title>
+    <link rel="stylesheet"  href="{% static 'css/style.css'%}">
+</head>
+<body>
+    <div class="container">
+        <h1>Recognition Results</h1>
+        <div class="result-info">
+            <p>Faces detected: {{ faces_found }}</p>
+        </div>
+        <div class="image-container">
+            <div class="image-box">
+                <h2>Original Image</h2>
+                <img src="{{ uploaded_image_url }}" alt="Original Image">
+            </div>
+            {% if detected_image_url %}
+            <div class="image-box">
+                <h2>Processed Image</h2>
+                <img src="{{ detected_image_url }}" alt="Processed Image">
+            </div>
+            {% endif %}
+        </div>
+        <a href="{% url 'index' %}" class="back-btn">Try Another Image</a>
+    </div>
+</body>
+</html>
